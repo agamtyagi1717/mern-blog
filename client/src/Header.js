@@ -15,7 +15,7 @@ export const Header = () => {
   }, []);
 
   function logout(){
-    fetch('http://localhost:4000/logout', {
+    fetch('https://mern-blog-agam.onrender.com/logout', {
       credentials: 'include',
       method: 'POST',
     });
