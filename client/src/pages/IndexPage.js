@@ -8,7 +8,7 @@ const IndexPage = () => {
 
 
   useEffect(()=>{
-    fetch('http://localhost:4000/post').then(response=>{
+    fetch('https://mern-blog-agam.onrender.com/post').then(response=>{
       response.json().then(posts => {
         setPosts(posts);
       });
