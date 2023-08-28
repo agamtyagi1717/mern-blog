@@ -12,7 +12,7 @@ const uploadMiddleware = multer({ dest: "uploads/"});
 const fs = require("fs");
 const bodyParser = require("body-parser"); 
 
-router.use(bodyParser.json());
+app.use(bodyParser.json());
 
 
 
