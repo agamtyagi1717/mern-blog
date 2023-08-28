@@ -16,7 +16,7 @@ const EditPost = () => {
 
 
   useEffect(()=>{
-    fetch('http://localhost:4000/post/'+id).then(
+    fetch('https://mern-blog-agam.onrender.com/post/'+id).then(
         response=>{
             response.json().then(postInfo => {
                 setTitle(postInfo.title);
@@ -37,7 +37,7 @@ const EditPost = () => {
         data.set('file', files?.[0]);
     }
 
-    const response = await fetch('http://localhost:4000/post', {
+    const response = await fetch('https://mern-blog-agam.onrender.com/post', {
         method: 'PUT',
         body: data,
         credentials: 'include',
