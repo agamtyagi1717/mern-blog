@@ -76,7 +76,7 @@ header nav{
   /* border-radius: 30px; */
 }
 .greetings{
-  text-align: center;
+  padding-left: 3px;
   padding-top: 4px;
 }
 .navlinks:hover{
