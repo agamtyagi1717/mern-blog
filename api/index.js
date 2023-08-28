@@ -74,7 +74,7 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("jwt");
 });
 
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
