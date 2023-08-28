@@ -64,14 +64,19 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
-app.get('/profile', (req,res) => {
-  const {token} = req.cookies;
-  jwt.verify(token, secret, {}, (err,info) => {
-    if (err) throw err;
+app.get("/profile", (req, res) => {
+  const { token } = req.cookies;
+  
+  // if(token === '')return res.json("no token"); 
+  
+  jwt.verify(token, secret, {}, (err, info) => {
+    // if (err) throw err;
+    
     res.json(info);
   });
+  // res.json(req.cookies);
 });
+
 
 
 app.post("/logout", (req, res) => {

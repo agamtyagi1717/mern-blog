@@ -12,7 +12,7 @@ export const Header = () => {
         setUserInfo(userInfo);
       })
     });
-  }, []);
+  }, [setUserInfo]);
 
   function logout(){
     fetch('https://mern-blog-agam.onrender.com/logout', {
