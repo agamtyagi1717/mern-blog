@@ -70,11 +70,11 @@ app.get("/profile", (req, res) => {
     
     res.json(info);
   });
-  res.json(req.cookies);
 });
 
 app.post("/logout", (req, res) => {
-  res.clearCookie("jwt");
+  res.cookie('token', '', { expires: new Date(0) }).json("ok");
+  // res.json("ok");
 });
 
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
