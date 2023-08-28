@@ -149,4 +149,4 @@ app.get("/post/:id", async (req, res) => {
   res.json(postDoc);
 });
 
-app.listen(process.env.PORT);
+app.listen(4000);
