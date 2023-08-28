@@ -75,6 +75,10 @@ header nav{
   border: 2px black solid;
   /* border-radius: 30px; */
 }
+.greetings{
+  text-align: center;
+  padding-top: 4px;
+}
 .navlinks:hover{
   background-color: rgb(255, 153, 0);
 }

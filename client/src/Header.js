@@ -34,7 +34,7 @@ export const Header = () => {
             <nav>
               {username && (
                 <>
-                  <span>Hello, {username}!</span>
+                  <span className='greetings'>Hello, {username}!</span>
                   <Link className='navlinks' to="create">Create new post</Link>
                   <a className='navlinks' href='' onClick={logout}>Logout</a>
                 </>
