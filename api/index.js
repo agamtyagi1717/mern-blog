@@ -53,7 +53,7 @@ app.post("/login", async (req, res) => {
     jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
       if (err) throw err;
 
-      res.cookie("token", token, { httpOnly: true, secure: true }).json({
+      res.cookie("token", token, { httpOnly: true, secure: true, sameSite: "none" }).json({
         id: userDoc._id,
         username,
       });
@@ -74,7 +74,7 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-  res.cookie('token', '').json("ok");
+  res.cookie("token", '', { httpOnly: true, secure: true, sameSite: "none" }).json("ok");
 });
 
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
