@@ -6,7 +6,7 @@ export const Post = ({_id, title, summary, content, cover, createdAt, author}) =
     <div className="post">
         <div>
           <Link to={`/post/${_id}`}>
-          <img src={'http://localhost:4000/'+cover} alt='pic'></img>
+          <img src={'https://mern-blog-agam.onrender.com/'+cover} alt='pic'></img>
           </Link>
         </div>
         <div className="texts">
