@@ -58,23 +58,21 @@ app.post("/login", async (req, res) => {
         username,
       });
     });
-  } else {
-    // alert('wrong password');
-    // res.json(null);  
-  }
+  } 
 });
 
 app.get("/profile", (req, res) => {
   const { token } = req.cookies;
   
-  // if(token === '')return res.json("no token"); 
-  
-  jwt.verify(token, secret, {}, (err, info) => {
-    if (err) throw err;
-    
-    res.json(info);
-  });
-  // res.json(req.cookies);
+  if(token){
+    jwt.verify(token, secret, {}, (err, info) => {
+      if (err) throw err;
+      
+      res.json(info);
+    });
+  }
+
+  res.json(req.cookies);
 });
 
 
