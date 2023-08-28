@@ -68,7 +68,7 @@ app.get("/profile", (req, res) => {
     
     res.json(info);
   });
-  if(token=== '')return res.json("no token"); 
+  // if(token=== '')return res.json("no token"); 
   res.json(req.cookies);
 });
 
