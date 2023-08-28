@@ -35,15 +35,15 @@ export const Header = () => {
               {username && (
                 <>
                   <span>Hello, {username}!</span>
-                  <Link to="create">Create new post</Link>
-                  <a href='' onClick={logout}>Logout</a>
+                  <Link className='navlinks' to="create">Create new post</Link>
+                  <a className='navlinks' href='' onClick={logout}>Logout</a>
                 </>
               )}
 
               {!username && (
                 <>
-                  <Link to="/login">Login</Link>
-                  <Link to="/register">Register</Link>
+                  <Link className='navlinks' to="/login">Login</Link>
+                  <Link className='navlinks' to="/register">Register</Link>
                 </>
               )}
             </nav>

@@ -67,6 +67,17 @@ header nav{
   display: flex;
   gap: 15px;
 }
+.navlinks{
+  text-align: center;
+  color: black;
+  padding: 4px 12px;
+  background-color: rgb(255, 200, 0);
+  border: 2px black solid;
+  /* border-radius: 30px; */
+}
+.navlinks:hover{
+  background-color: rgb(255, 153, 0);
+}
 
 div.post{
   display: flex;
