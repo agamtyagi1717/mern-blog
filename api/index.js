@@ -63,19 +63,17 @@ app.post("/login", async (req, res) => {
 
 app.get("/profile", (req, res) => {
   const { token } = req.cookies;
-
+  
+  
   jwt.verify(token, secret, {}, (err, info) => {
-    if (err) {
-      // Handle the error, e.g., unauthorized access
-      return res.status(401).json({ error: "Unauthorized" });
-    }
-
+    if (err) throw err;
+    
     res.json(info);
   });
 });
 
 app.post("/logout", (req, res) => {
-  res.cookie('token', '', { expires: new Date(0), httpOnly: true, secure: true, sameSite: "none" }).json("ok");
+  res.status(202).clearCookie('token', { httpOnly: true, secure: true, sameSite: "none" }).send('cookie cleared');
 });
 
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
