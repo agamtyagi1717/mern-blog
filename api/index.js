@@ -73,7 +73,7 @@ app.get("/profile", (req, res) => {
 });
 
 app.post("/logout", (req, res) => {
-  res.status(202).clearCookie('token', { httpOnly: true, secure: true, sameSite: "none" }).send('cookie cleared');
+  res.status(202).clearCookie('token', { httpOnly: true, secure: true, sameSite: "none", path:'/', domain: 'https://mern-blog-agam.onrender.com/'}).send('cookie cleared');
 });
 
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
