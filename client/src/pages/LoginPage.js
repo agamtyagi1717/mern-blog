@@ -24,7 +24,6 @@ const LoginPage = () => {
         setRedirect(true);
       });
     } else {
-      alert("Wrong credentials");
     }
   }
 
