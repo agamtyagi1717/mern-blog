@@ -70,7 +70,7 @@ app.get("/profile", (req, res) => {
   // if(token === '')return res.json("no token"); 
   
   jwt.verify(token, secret, {}, (err, info) => {
-    // if (err) throw err;
+    if (err) throw err;
     
     res.json(info);
   });
