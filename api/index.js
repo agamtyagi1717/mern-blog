@@ -10,6 +10,11 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/"});
 const fs = require("fs");
+const bodyParser = require("body-parser"); 
+
+router.use(bodyParser.json());
+
+
 
 const salt = bcrypt.genSaltSync(10);
 const secret = "bnfawjbfwafw2r2";
