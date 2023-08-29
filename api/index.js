@@ -70,6 +70,8 @@ app.post("/login", async (req, res) => {
 app.get("/profile", (req, res) => {
   const { token } = req.cookies;
 
+  if (token === "") return res.json("no token");
+
   jwt.verify(token, secret, {}, (err, info) => {
     if (err) throw err;
 
@@ -79,15 +81,8 @@ app.get("/profile", (req, res) => {
 
 app.post("/logout", (req, res) => {
   res
-    .status(202)
-    .clearCookie("token", {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      path: "/",
-      domain: "mern-blog-agam.onrender.com/",
-    })
-    .send("cookie cleared");
+    .cookie("token", "", { httpOnly: true, secure: true, sameSite: "none" })
+    .json("ok");
 });
 
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
