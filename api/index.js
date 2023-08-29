@@ -8,18 +8,18 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
-const uploadMiddleware = multer({ dest: "uploads/"});
+const uploadMiddleware = multer({ dest: "uploads/" });
 const fs = require("fs");
-const bodyParser = require("body-parser"); 
+const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
-
-
 
 const salt = bcrypt.genSaltSync(10);
 const secret = "bnfawjbfwafw2r2";
 
-app.use(cors({ credentials: true, origin: "https://mernblog-agam.vercel.app" }));
+app.use(
+  cors({ credentials: true, origin: "https://mernblog-agam.vercel.app" })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
@@ -53,27 +53,41 @@ app.post("/login", async (req, res) => {
     jwt.sign({ username, id: userDoc._id }, secret, {}, (err, token) => {
       if (err) throw err;
 
-      res.cookie("token", token, { httpOnly: true, secure: true, sameSite: "none" }).json({
-        id: userDoc._id,
-        username,
-      });
+      res
+        .cookie("token", token, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+        })
+        .json({
+          id: userDoc._id,
+          username,
+        });
     });
-  } 
+  }
 });
 
 app.get("/profile", (req, res) => {
   const { token } = req.cookies;
-  
-  
+
   jwt.verify(token, secret, {}, (err, info) => {
     if (err) throw err;
-    
+
     res.json(info);
   });
 });
 
 app.post("/logout", (req, res) => {
-  res.status(202).clearCookie('token', { httpOnly: true, secure: true, sameSite: "none", path:'/', domain: 'https://mern-blog-agam.onrender.com/'}).send('cookie cleared');
+  res
+    .status(202)
+    .clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      path: "/",
+      domain: "mern-blog-agam.onrender.com/",
+    })
+    .send("cookie cleared");
 });
 
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
@@ -121,11 +135,11 @@ app.put("/post", uploadMiddleware.single("file"), async (req, res) => {
       return res.status(400).json("you are not the author");
     }
 
-    await postDoc.updateOne({ 
-        title,
-        summary, 
-        content,
-        cover: newPath ? newPath : postDoc.cover,
+    await postDoc.updateOne({
+      title,
+      summary,
+      content,
+      cover: newPath ? newPath : postDoc.cover,
     });
 
     res.json(postDoc);
@@ -150,4 +164,4 @@ app.get("/post/:id", async (req, res) => {
 
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, '0.0.0.0');
+app.listen(PORT, "0.0.0.0");
